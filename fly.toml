@@ -1,0 +1,28 @@
+# fly.toml app configuration file generated for twitterkiller on 2024-05-30T02:44:38+08:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'twitterkiller'
+primary_region = 'sin'
+
+[build]
+  image = 'may111997/reactivities:latest'
+
+[env]
+  ASPNETCORE_URLS="http://+:8080"
+  Cloudinary__CloudName="388857537286972"
+  Cloudinary__ApiKey="G6fF_Hq_4mCNoDqEZ9cY3t-OgyQ"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
